@@ -4,11 +4,12 @@ backend:
 
 media_folder: static/img
 public_folder: /img
-
 collections:
     - name: 'blog'
       label: 'Blog'
       folder: 'content/blog'
+      media_folder: static/img
+      public_folder: /img
       create: true
       slug: 'index'
       path: '{{title}}/index'
