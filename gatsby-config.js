@@ -32,20 +32,18 @@ module.exports = {
             options: {
                 plugins: [
                     {
-                        resolve: `gatsby-remark-images`,
+                        resolve: `gatsby-remark-relative-images`,
                         options: {
-                            maxWidth: 630
+                            staticFolderName: 'static',
+                            include: ['featuredimage']
                         }
                     },
                     {
-                        resolve: `gatsby-remark-responsive-iframe`,
+                        resolve: `gatsby-remark-images`,
                         options: {
-                            wrapperStyle: `margin-bottom: 1.0725rem`
+                            maxWidth: 1080
                         }
-                    },
-                    `gatsby-remark-prismjs`,
-                    `gatsby-remark-copy-linked-files`,
-                    `gatsby-remark-smartypants`
+                    }
                 ]
             }
         },
