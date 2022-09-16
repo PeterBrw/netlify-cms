@@ -13,18 +13,47 @@ module.exports = {
     },
     plugins: [
         `gatsby-plugin-image`,
+
         {
-            resolve: `gatsby-source-filesystem`,
+            resolve: 'gatsby-plugin-react-svg',
             options: {
-                path: `${__dirname}/content/blog`,
-                name: `blog`
+                rule: {
+                    include: /\.inline\.svg$/
+                }
+            }
+        },
+
+        {
+            resolve: 'gatsby-source-filesystem',
+            options: {
+                path: `${__dirname}/static/img`,
+                name: 'uploads'
+            }
+        },
+
+        {
+            resolve: 'gatsby-source-filesystem',
+            options: {
+                path: `${__dirname}/src/assets/images`,
+                name: 'images'
             }
         },
         {
-            resolve: `gatsby-source-filesystem`,
+            resolve: 'gatsby-source-filesystem',
             options: {
-                name: `images`,
-                path: `${__dirname}/src/images`
+                path: `${__dirname}/src/markdown`,
+                name: 'markdown'
+            }
+        },
+        `gatsby-transformer-sharp`,
+
+        {
+            resolve: `gatsby-plugin-sharp`,
+            options: {
+                defaults: {
+                    quality: 100,
+                    placeholder: `none`
+                }
             }
         },
         {
@@ -47,8 +76,6 @@ module.exports = {
                 ]
             }
         },
-        `gatsby-transformer-sharp`,
-        `gatsby-plugin-sharp`,
         {
             resolve: `gatsby-plugin-feed`,
             options: {

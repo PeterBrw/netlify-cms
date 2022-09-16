@@ -53,7 +53,6 @@ const BlogIndex = ({ data, location }) => {
                     );
                 })}
             </ol>
-            <img src={img} className='shadow' />
         </Layout>
     );
 };
