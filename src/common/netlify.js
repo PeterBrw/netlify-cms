@@ -1,6 +1,5 @@
 import CMS from 'netlify-cms-app';
 
-
 CMS.registerEditorComponent({
     label: 'Image',
     id: 'image',
@@ -33,7 +32,15 @@ CMS.registerEditorComponent({
         },
         {
             label: 'CSS Classes',
-            name: 'classes'
+            name: 'classes',
+            fields: [
+                {
+                    label: 'classes',
+                    name: 'classes',
+                    widget: 'select',
+                    options: ['shadows', 'height', 'width', '']
+                }
+            ]
         },
         {
             label: 'Title',
