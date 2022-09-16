@@ -1,7 +1,5 @@
 import * as React from 'react';
 import { Link, graphql } from 'gatsby';
-import img from '../../content/blog/milanezia/whatsapp-image-2022-08-19-at-1.36.21-pm.jpeg';
-
 import Bio from '../components/bio';
 import Layout from '../components/layout';
 import Seo from '../components/seo';

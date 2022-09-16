@@ -60,13 +60,13 @@ module.exports = {
             resolve: `gatsby-transformer-remark`,
             options: {
                 plugins: [
-                    {
-                        resolve: `gatsby-remark-relative-images`,
-                        options: {
-                            staticFolderName: 'static',
-                            include: ['featuredimage']
-                        }
-                    },
+                    // {
+                    //     resolve: `gatsby-remark-relative-images`,
+                    //     options: {
+                    //         staticFolderName: 'static',
+                    //         include: ['featuredimage']
+                    //     }
+                    // },
                     {
                         resolve: `gatsby-remark-images`,
                         options: {
