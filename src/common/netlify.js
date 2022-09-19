@@ -25,7 +25,7 @@ CMS.registerEditorComponent({
             media_library: {
                 allow_multiple: true,
                 config: {
-                    slug: '{{year}}-{{month}}-{{day}}-{{slug}}'
+                    name: '{{year}}-{{month}}-{{day}}-{{slug}}'
                 }
             }
         },
