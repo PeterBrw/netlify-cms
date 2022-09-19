@@ -35,8 +35,8 @@ CMS.registerEditorComponent({
             name: 'classes',
             fields: [
                 {
-                    label: 'class',
-                    name: 'class',
+                    label: 'xclass',
+                    name: 'xclass',
                     widget: 'select',
                     options: ['shadows', 'height', 'width', '']
                 }
