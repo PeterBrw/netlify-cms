@@ -24,7 +24,7 @@ CMS.registerEditorComponent({
             widget: 'image',
             media_library: {
                 allow_multiple: true,
-                name: 'wutever'
+                slug: '{{year}}-{{month}}-{{day}}-{{slug}}'
             }
         },
         {
