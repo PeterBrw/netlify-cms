@@ -11,7 +11,7 @@ CMS.registerEditorComponent({
             classes: match[4]
         },
     toBlock: function ({ image, alt, title, classes }, getAsset, fields) {
-        return `<img src="${image || ''}" alt="${alt || ''}" title="${title || ''}" class="shadows h-48 w-96 ${classes || ''}"/>`;
+        return `<img src="${image || ''}" alt="${alt || ''}" title="${title || ''}" class="${classes || ''}"/>`;
     },
     toPreview: ({ image, alt, title, classes }, getAsset, fields) => {
         return `<img src="${image}" alt="${alt}" title="${title}" class="${classes}"/>`;
@@ -33,14 +33,9 @@ CMS.registerEditorComponent({
         {
             label: 'CSS Classes',
             name: 'classes',
-            fields: [
-                {
-                    label: 'xclass',
-                    name: 'xclass',
-                    widget: 'select',
-                    options: ['shadows', 'height', 'width', '']
-                }
-            ]
+            widget: 'select',
+            multiple: true,
+            options: ['shadows', 'h-48', 'w-96']
         },
         {
             label: 'Title',
