@@ -17,13 +17,14 @@ CMS.registerEditorComponent({
         return `<img src="${image}" alt="${alt}" title="${title}" class="${classes}"/>`;
     },
     pattern: /^<img src="(.*?)" alt="(.*?)" title="(.*?)" class="(.*?)"\/>$/s,
+    slug: '124',
     fields: [
         {
             label: 'Picture',
             name: 'image',
             widget: 'image',
             media_library: {
-                allow_multiple: false
+                allow_multiple: true
             }
         },
         {
