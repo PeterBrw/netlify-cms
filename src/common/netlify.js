@@ -35,7 +35,7 @@ CMS.registerEditorComponent({
             name: 'classes',
             widget: 'select',
             multiple: true,
-            default: 'shadows',
+            default: ['shadows'],
             options: ['shadows', 'h-48', 'w-96']
         },
         {
