@@ -35,7 +35,7 @@ CMS.registerEditorComponent({
             name: 'classes',
             widget: 'select',
             multiple: true,
-            options: ['shadows', 'h-48', 'w-96', 'rounded-lg']
+            options: ['shadows ', ' h-48 ', ' w-96 ', ' rounded-lg']
         },
         {
             label: 'Title',
