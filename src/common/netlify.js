@@ -23,10 +23,7 @@ CMS.registerEditorComponent({
             name: 'image',
             widget: 'image',
             media_library: {
-                allow_multiple: true,
-                config: {
-                    name: '{{year}}-{{month}}-{{day}}-{{slug}}'
-                }
+                allow_multiple: true
             }
         },
         {
@@ -38,6 +35,7 @@ CMS.registerEditorComponent({
             name: 'classes',
             widget: 'select',
             multiple: true,
+            default: 'shadows',
             options: ['shadows', 'h-48', 'w-96']
         },
         {
