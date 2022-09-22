@@ -1,7 +1,7 @@
 import CMS from 'netlify-cms-app';
 import '../styles/global.css';
 
-const netlifySplit = (arr) => arr.split(',');
+const joinClasses = (arr) => arr.join(' ');
 
 CMS.registerEditorComponent({
     label: 'Image',
@@ -14,13 +14,25 @@ CMS.registerEditorComponent({
             classes: match[4]
         },
     toBlock: function ({ image, alt, title, classes }, getAsset, fields) {
+        console.log(classes);
+        const formattedClasses = joinClasses(classes || []);
         return `<img src="${image || ''}" alt="${alt || ''}" title="${title || ''}" class="${
-            classes.join('') || ''
+            formattedClasses || '' || ''
         }"/>`;
     },
     toPreview: ({ image, alt, title, classes }, getAsset, fields) => {
-        return `<img src="${image}" alt="${alt}" title="${title}" class="${classes.split(', ').join('')}"/>`;
+        const formattedClassesPreview = [];
+        const availableClasses = ['shadows', 'h-48', 'w-96', 'rounded-lg', 'mx-auto'];
+
+        availableClasses.map((item) => {
+            if (classes.includes(item)) {
+                formattedClassesPreview.push(item);
+            }
+        });
+
+        return `<img src="${image}" alt="${alt}" title="${title}" class="${joinClasses(formattedClassesPreview)}"/>`;
     },
+
     pattern: /^<img src="(.*?)" alt="(.*?)" title="(.*?)" class="(.*?)"\/>$/s,
     fields: [
         {
