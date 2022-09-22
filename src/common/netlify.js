@@ -1,6 +1,8 @@
 import CMS from 'netlify-cms-app';
 import '../styles/global.css';
 
+const netlifySplit = (arr) => arr.split(',');
+
 CMS.registerEditorComponent({
     label: 'Image',
     id: 'image',
@@ -12,10 +14,12 @@ CMS.registerEditorComponent({
             classes: match[4]
         },
     toBlock: function ({ image, alt, title, classes }, getAsset, fields) {
-        return `<img src="${image || ''}" alt="${alt || ''}" title="${title || ''}" class="${classes || ''}"/>`;
+        return `<img src="${image || ''}" alt="${alt || ''}" title="${title || ''}" class="${
+            classes.join('') || ''
+        }"/>`;
     },
     toPreview: ({ image, alt, title, classes }, getAsset, fields) => {
-        return `<img src="${image}" alt="${alt}" title="${title}" class="${classes}"/>`;
+        return `<img src="${image}" alt="${alt}" title="${title}" class="${classes.split(',').join('')}"/>`;
     },
     pattern: /^<img src="(.*?)" alt="(.*?)" title="(.*?)" class="(.*?)"\/>$/s,
     fields: [
@@ -36,8 +40,8 @@ CMS.registerEditorComponent({
             name: 'classes',
             widget: 'select',
             multiple: true,
-            default: [' shadows '],
-            options: [' shadows ', ' h-48 ', ' w-96 ', ' rounded-lg ', ' mx-auto ']
+            default: ['shadows'],
+            options: ['shadows', 'h-48', 'w-96', 'rounded-lg', 'mx-auto']
         },
         {
             label: 'Title',
