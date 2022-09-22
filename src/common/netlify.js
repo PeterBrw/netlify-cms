@@ -19,7 +19,7 @@ CMS.registerEditorComponent({
         }"/>`;
     },
     toPreview: ({ image, alt, title, classes }, getAsset, fields) => {
-        return `<img src="${image}" alt="${alt}" title="${title}" class="${classes.split(', ').join(' ')}"/>`;
+        return `<img src="${image}" alt="${alt}" title="${title}" class="${classes.split(', ').join('')}"/>`;
     },
     pattern: /^<img src="(.*?)" alt="(.*?)" title="(.*?)" class="(.*?)"\/>$/s,
     fields: [
