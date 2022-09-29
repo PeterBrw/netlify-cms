@@ -18,9 +18,9 @@ CMS.registerEditorComponent({
     toBlock: function ({ image, alt, title, classes, width, height }, getAsset, fields) {
         console.log(classes);
         const formattedClasses = joinClasses(classes || []);
-        return `<img src="${image || ''}" alt="${alt || ''}" title="${title || ''}" class="${
+        return `<img src="${image || ''}" alt="${alt || ''}" title="${title || ''}" class="some-class ${
             formattedClasses || '' || ''
-        }" width="${width || ''}" height="${height || ''}"/>`;
+        }" style="width:${width || ''}rem;height:${height || ''}rem;"/>`;
     },
     toPreview: ({ image, alt, title, classes, width, height }, getAsset, fields) => {
         const formattedClassesPreview = [];
@@ -32,12 +32,12 @@ CMS.registerEditorComponent({
             }
         });
 
-        return `<img src="${image}" alt="${alt}" title="${title}" width="${width}" height="${height}" class="${joinClasses(
+        return `<img src="${image}" alt="${alt}" title="${title}" class="some-class ${joinClasses(
             formattedClassesPreview
-        )}"/>`;
+        )}" style="width:${width}rem;height:${height}rem;"/>`;
     },
 
-    pattern: /^<img src="(.*?)" alt="(.*?)" title="(.*?)" class="(.*?)" width="(.*?)" height="(.*?)"\/>$/s,
+    pattern: /^<img src="(.*?)" alt="(.*?)" title="(.*?)" class="(.*?)" style="width:(.*?)rem;height:(.*?)rem;"\/>$/s,
     fields: [
         {
             label: 'Picture',
