@@ -11,16 +11,18 @@ CMS.registerEditorComponent({
             image: match[1],
             alt: match[2],
             title: match[3],
-            classes: match[4]
+            classes: match[4],
+            width: match[5],
+            height: match[6]
         },
-    toBlock: function ({ image, alt, title, classes }, getAsset, fields) {
+    toBlock: function ({ image, alt, title, classes, width, height }, getAsset, fields) {
         console.log(classes);
         const formattedClasses = joinClasses(classes || []);
         return `<img src="${image || ''}" alt="${alt || ''}" title="${title || ''}" class="${
             formattedClasses || '' || ''
-        }"/>`;
+        }" width="${width || ''}" height="${height || ''}"/>`;
     },
-    toPreview: ({ image, alt, title, classes }, getAsset, fields) => {
+    toPreview: ({ image, alt, title, classes, width, height }, getAsset, fields) => {
         const formattedClassesPreview = [];
         const availableClasses = ['shadows', 'h-48', 'w-96', 'rounded-lg', 'mx-auto'];
 
@@ -30,10 +32,12 @@ CMS.registerEditorComponent({
             }
         });
 
-        return `<img src="${image}" alt="${alt}" title="${title}" class="${joinClasses(formattedClassesPreview)}"/>`;
+        return `<img src="${image}" alt="${alt}" title="${title}" width="${width}" height="${height}" class="${joinClasses(
+            formattedClassesPreview
+        )}"/>`;
     },
 
-    pattern: /^<img src="(.*?)" alt="(.*?)" title="(.*?)" class="(.*?)"\/>$/s,
+    pattern: /^<img src="(.*?)" alt="(.*?)" title="(.*?)" class="(.*?)" width="(.*?)" height="(.*?)"\/>$/s,
     fields: [
         {
             label: 'Picture',
@@ -58,6 +62,18 @@ CMS.registerEditorComponent({
         {
             label: 'Title',
             name: 'title'
+        },
+        {
+            label: 'Width',
+            name: 'width',
+            widget: 'number',
+            value_type: 'int'
+        },
+        {
+            label: 'Height',
+            name: 'height',
+            widget: 'number',
+            value_type: 'int'
         }
     ]
 });
