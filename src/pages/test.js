@@ -16,7 +16,8 @@ const Test = () => {
     return (
         <>
             <h1 className='text-white bg-blue-900'>Test CSS</h1>
-            <GatsbyImage alt='' image={data.inventory.childImageSharp.gatsbyImageData} className="h-48 w-96" />
+            <GatsbyImage alt='' image={data.inventory.childImageSharp.gatsbyImageData} className='h-48 w-96' />
+            <h1>Wut in the world!?</h1>
         </>
     );
 };
