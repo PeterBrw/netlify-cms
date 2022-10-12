@@ -1,28 +1,58 @@
-import React from 'react';
-import { GatsbyImage } from 'gatsby-plugin-image';
+import React, { useEffect } from 'react';
 import { graphql, useStaticQuery } from 'gatsby';
-import {
-    GrowthBook,
-    GrowthBookProvider
-} from "@growthbook/growthbook-react";
+import { GrowthBook, GrowthBookProvider } from '@growthbook/growthbook-react';
+import { nanoid } from 'nanoid';
+import Wutever from '../components/Wutever/Wutever';
+
+const isBrowser = typeof window !== 'undefined';
+
+let visitor_id = isBrowser ? localStorage.getItem('visitor_id') : null;
+if (!visitor_id && isBrowser) {
+    visitor_id = nanoid();
+    localStorage.setItem('visitor_id', visitor_id);
+}
 
 const Test = () => {
-    const data = useStaticQuery(graphql`
-        query Soc2Query {
-            inventory: file(relativePath: { eq: "profile-pic.png" }) {
-                childImageSharp {
-                    gatsbyImageData(width: 1080, layout: CONSTRAINED)
-                }
-            }
+    const growthbook = new GrowthBook({
+        attributes: {
+            id: visitor_id
+        },
+        trackingCallback: (experiment, result) => {
+            console.log({
+                experimentId: experiment.key,
+                variationId: result.variationId
+            });
         }
-    `);
+    });
+
+    useEffect(() => {
+        // Load feature definitions from API
+        fetch('https://cdn.growthbook.io/api/features/key_prod_44d484e96e728eca')
+            .then((res) => res.json())
+            .then((json) => {
+                console.log(json);
+                growthbook.setFeatures(json.features);
+            });
+
+        // TODO: replace with real targeting attributes
+        // growthbook.setAttributes({
+        //     id: 25,
+        //     deviceId: 'foo',
+        //     company: 'foo',
+        //     loggedIn: true,
+        //     employee: true,
+        //     country: 'foo',
+        //     browser: 'foo',
+        //     url: 'foo'
+        // });
+    }, []);
 
     return (
-        <>
-            {/*<h1 className='text-white bg-blue-900'>Test CSS</h1>*/}
-            {/*<GatsbyImage alt='' image={data.inventory.childImageSharp.gatsbyImageData} className='h-48 w-96' />*/}
-            <h1>Wut in the world!?</h1>
-        </>
+        <GrowthBookProvider growthbook={growthbook}>
+            <div>
+                <Wutever />
+            </div>
+        </GrowthBookProvider>
     );
 };
 
