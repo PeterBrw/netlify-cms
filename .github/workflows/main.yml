@@ -9,12 +9,8 @@ jobs:
   build:
     runs-on: ubuntu-20.04
     steps:
-      - uses: actions/checkout@v2
-      - uses: PeterBrw/gatsby-gh-pages-action@v1
-        run: |
-            npm run install
-            npm run build
-          
+      - uses: actions/checkout@v1
+      - uses: lobotomoe/gatsby-gh-pages-action
         with:
           access-token: ${{ secrets.CUCU_AND_CO }}
           deploy-branch: gh-pages
