@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-20.04
     steps:
       - uses: actions/checkout@v1
-      - uses: PeterBrw/gatsby-gh-pages-action@v2
+      - uses: PeterBrw/gatsby-gh-pages-action@v1
         with:
           access-token: ${{ secrets.CUCU_AND_CO }}
           deploy-branch: gh-pages
