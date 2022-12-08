@@ -11,6 +11,10 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - uses: PeterBrw/gatsby-gh-pages-action@v1
+        run: |
+            npm run install
+            npm run build
+          
         with:
           access-token: ${{ secrets.CUCU_AND_CO }}
           deploy-branch: gh-pages
