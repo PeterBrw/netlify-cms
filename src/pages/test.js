@@ -48,11 +48,13 @@ const Test = () => {
     }, []);
 
     return (
-        <GrowthBookProvider growthbook={growthbook}>
-            <div>
-                <Wutever />
-            </div>
-        </GrowthBookProvider>
+        <>
+            <GrowthBookProvider growthbook={growthbook}>
+                <div>
+                    <Wutever />
+                </div>
+            </GrowthBookProvider>
+        </>
     );
 };
 
