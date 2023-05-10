@@ -1,3 +1,8 @@
+require('dotenv').config();
+
+
+console.log('process.env.ALGOLIA_APP_ID', process.env.ALGOLIA_APP_ID);
+
 module.exports = {
     siteMetadata: {
         title: `Gatsby Starter Blog`,
