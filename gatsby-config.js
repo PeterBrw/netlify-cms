@@ -1,7 +1,7 @@
 require('dotenv').config();
 
 
-console.log('process.env.ALGOLIA_APP_ID', process.env.ALGOLIA_APP_ID);
+console.log('process.env.ALGOLIA_APP_IDs', process.env.ALGOLIA_APP_ID);
 
 module.exports = {
     siteMetadata: {
